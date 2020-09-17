@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css累加</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            background-color: #bca;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="extend">extend</button>
+    <button id="shrink">shrink</button>
+    <div class="box"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $("#extend").click(function () {
+            $(".box").css("width", "+=10");
+        });
+
+        $("#shrink").click(function () {
+            $(".box").css("width", "-=10").css("margin-left", "+=10");
+        });
+
+
+    </script>
+</body>
+
+</html>

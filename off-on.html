@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>off-on</title>
+</head>
+
+<body>
+    <button id="sayHi">hi</button>
+    <button id="on">on</button>
+    <button id="off">off</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // let sayHI = function () {
+        //     console.log("hi")
+        // };
+        // $("#sayHi").on("click", function () {
+        //     // console.log("hi");
+        // });
+
+        // $("#on").on("click", function () {
+        //     $("#sayHi").off("click", sayHI);
+        //     $("#sayHi").on("click", sayHI);
+        // });
+
+        // $("#off").on("click", function () {
+        //     $("#sayHi").off("click", sayHI);
+        // });
+
+
+
+        let sayHI = function () {
+            console.log("hi")
+        };
+        $("#sayHi").on("click", sayHI); //綁的是誰，off的就是誰
+
+        $("#on").on("click", function () {
+            $("#sayHi").off("click", sayHI);
+            $("#sayHi").on("click", sayHI);
+        });
+
+        $("#off").on("click", function () {
+            $("#sayHi").off("click", sayHI);
+        });
+        //如果sayHI用function () {console.log("hi")}取代的話，會不能執行。就跟 []==[]是falseㄧ樣，新的陣列會在記憶體佔一個新的位子，都是獨立存在的。
+    </script>
+</body>
+
+</html>

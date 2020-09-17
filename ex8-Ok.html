@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box move</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .wrap {
+            margin-top: 15px;
+            width: 700px;
+            height: 400px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .box {
+            left: 0px;
+            width: 120px;
+            height: 120px;
+            background-color: lightblue;
+            position: absolute;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap mx-auto">
+        <div class="box"></div>
+    </div>
+
+    <div class="button-area text-center">
+        <button class="btn btn-success" id="up">up</button>
+        <div class="mx-auto">
+            <button class="btn btn-success" id="left">left</button>
+            <button class="btn btn-success" id="right">right</button>
+        </div>
+        <button class="btn btn-success" id="down">down</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        let timeoutID = null;
+        // let newLeft = null;
+
+        $("#left").mouseenter(function () {
+
+            // $(".box").css("left", "-=20px");
+            timeoutID = window.setInterval((() => {
+
+                let newLeft = parseInt($(".box").css("left"));
+
+                if (newLeft > 0) {
+                    $(".box").css("left", "-=20px")
+                }
+            }
+            ), 100);
+            console.log("left mouseenter:", timeoutID);
+        });
+        $("#left").mouseleave(function () {
+            clearInterval(timeoutID);
+            console.log("left leave:", timeoutID)
+        });
+
+
+
+        $("#right").mouseenter(function () {
+            timeoutID = window.setInterval((() => {
+
+
+                let newLeft = parseInt($(".box").css("left"));
+
+
+                if (newLeft < 580) {
+                    $(".box").css("left", "+=20px")
+                }
+
+            }
+            ), 100);
+            console.log("right mouseenter:", timeoutID)
+            console.log($('.box').css('left'));
+        });
+        $("#right").mouseleave(function () {
+            clearInterval(timeoutID);
+            console.log("right leave:", timeoutID)
+        });
+
+
+
+
+        $("#down").mouseenter(function () {
+            timeoutID = window.setInterval((() => {
+
+                let newTop = parseInt($(".box").css("top"));
+
+                if (newTop < 270) {
+                    $(".box").css("top", "+=20px")
+                }
+            }
+            ), 100);
+            console.log("down mouseenter:", timeoutID);
+        });
+        $("#down").mouseleave(function () {
+            clearInterval(timeoutID);
+            console.log("down leave:", timeoutID)
+        });
+
+
+
+        $("#up").mouseenter(function () {
+            timeoutID = window.setInterval((() => {
+
+                let newTop = parseInt($(".box").css("top"));
+
+                if (newTop > 15) {
+                    $(".box").css("top", "-=20px")
+                }
+            }
+            ), 100);
+            console.log("top mouseenter:", timeoutID);
+        });
+        $("#up").mouseleave(function () {
+            clearInterval(timeoutID);
+            console.log("top leave:", timeoutID)
+        });
+
+
+        // $("#down").click(function () {
+        //     let newTop = parseInt($(".box").css("top"));
+        //     if (newTop < 270) {
+        //         $(".box").css("top", "+=20px")
+        //     }
+        //     // $(".box").css("top", "+=20px");
+        // });
+
+
+
+        // $("#up").click(function () {
+        //     let newTop = parseInt($(".box").css("top"));
+        //     if (newTop > 15) {
+        //         $(".box").css("top", "-=20px")
+        //     }
+        //     // $(".box").css("top", "-=20px");
+        // });
+        // //長按不放？？？？？？？？？？
+
+
+
+
+        $(document).on("keydown", function (e) {
+            //event=e=evt
+            console.log("event", e);
+            let code = e.which;
+            if (code === 37) {
+                console.log("hi 37");
+                console.log("left", $(".box").css("left"));
+                let newLeft = parseInt($(".box").css("left"));
+
+                if (newLeft > 0) {
+                    $(".box").css("left", "-=20px")
+                }
+                // $(".box").css("left", "-=20px");
+            } else if (code === 38) {
+                console.log("hi 38");
+                let newTop = parseInt($(".box").css("top"));
+
+                if (newTop > 15) {
+                    $(".box").css("top", "-=20px")
+                }
+                // $(".box").css("top", "-=20px");
+            } else if (code === 39) {
+                console.log("hi 39");
+                let newLeft = parseInt($(".box").css("left"));
+
+                if (newLeft < 580) {
+                    $(".box").css("left", "+=20px")
+                }
+                // $(".box").css("left", "+=20px");
+            } else if (code === 40) {
+                console.log("hi 40");
+                let newTop = parseInt($(".box").css("top"));
+
+                if (newTop > 15) {
+                    $(".box").css("top", "-=20px")
+                }
+                // $(".box").css("top", "+=20px");
+            };
+
+        });
+    </script>
+
+</body>
+
+</html>

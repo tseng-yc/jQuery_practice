@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            height: 1000vh;
+        }
+
+        nav {
+            background-color: #fac;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            transition: all 0.5s;
+        }
+
+        .hide_nav {
+            transform: translateY(-100px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav fixed-top">hi hi nav</nav>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // // let scrollNow = $(window).scrollTop();
+        // $(window).scroll(function () {
+        //     // console.log("scrollTOP:", $(this).scrollTop());
+        //     let scrollNow = $(this).scrollTop();
+        //     let lastScroll = 
+        //     if (lastScroll > scrollNow) {
+
+        //     };
+        // });
+
+
+
+        let scrollLast;
+        $(window).scroll(function () {
+
+            let scrollNow = $(this).scrollTop();
+
+            if (scrollNow <= 150) {
+                //移除Class
+                $(".nav").removeClass("hide_nav");
+            } else {
+                if (scrollLast < scrollNow) {
+                    //往下走
+                    $(".nav").addClass("hide_nav");
+                } else {
+                    //往上走
+                    $(".nav").removeClass("hide_nav");
+                }
+            }
+            scrollLast = scrollNow;
+        });  //注意！要加fixed-top
+
+
+
+
+
+
+
+
+
+    // ● 效果: 使用者向下滑動時收起選單，向上滑則重新出現選單。
+    // ● 提示: let scrollNow = $(this).scrollTop();
+    // ● 記錄每次最後 lastScroll，並再次跟 scrollNow 比對;
+    // lastScroll 大於 scrollNow 則隱藏選單，
+    // lastScroll 小於 scrollNow 代表使用者向上滑，所以顯示選單。
+
+    </script>
+
+
+
+</body>
+
+</html>

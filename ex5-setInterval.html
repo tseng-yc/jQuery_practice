@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex5</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+    <style>
+        .wrap {
+            max-width: 800px;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .img-wrap {
+            width: 4000px;
+            left: 0px;
+            transition: 0.5s;
+        }
+
+        li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            bottom: 0;
+        }
+
+        .slider-dots li {
+            width: 40px;
+            height: 10px;
+            margin: 0 6px;
+            border: 1px solid white;
+
+        }
+
+        .dot1 {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap mx-auto mt-5 position-relative">
+
+        <ul class="list-unstyled d-flex img-wrap position-absolute">
+            <li>
+                <img src="../imgs/slide1.jpg" alt="" />
+            </li>
+            <li>
+                <img src="../imgs/slide2.jpg" alt="" />
+            </li>
+            <li>
+                <img src="../imgs/slide3.jpg" alt="" />
+            </li>
+            <li>
+                <img src="../imgs/slide4.jpg" alt="" />
+            </li>
+            <li>
+                <img src="../imgs/slide5.jpg" alt="" />
+            </li>
+        </ul>
+
+        <ul class="list-unstyled slider-dots position-absolute d-flex justify-content-center w-100">
+            <li class="dot1"></li>
+            <li class="dot2"></li>
+            <li class="dot3"></li>
+            <li class="dot4"></li>
+            <li class="dot5"></li>
+        </ul>
+    </div>
+    <!-- class="slider-dot" -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        let newIndex = 0;
+        setInterval(() => {
+            $(".img-wrap").css("left", newIndex * -800);
+            newIndex++;
+        }, 2000);
+
+
+        $("li").mouseenter(function () {
+            // console.log($(this).index());
+
+            if ($(this).index() === 0) {
+                $(this).css("background-color", "white");
+                $(".img-wrap").css("left", "0px");
+                $(".dot1").siblings().css("background-color", "transparent");
+            };
+
+            if ($(this).index() === 1) {
+                $(this).css("background-color", "white");
+                $(".img-wrap").css("left", "-800px");
+                $(".dot2").siblings().css("background-color", "transparent");
+            };
+
+            if ($(this).index() === 2) {
+                $(this).css("background-color", "white");
+                $(".img-wrap").css("left", "-1600px");
+                $(".dot3").siblings().css("background-color", "transparent");
+            };
+
+            if ($(this).index() === 3) {
+                $(this).css("background-color", "white");
+                $(".img-wrap").css("left", "-2400px");
+                $(".dot4").siblings().css("background-color", "transparent");
+            };
+
+            if ($(this).index() === 4) {
+                $(this).css("background-color", "white");
+                $(".img-wrap").css("left", "-3200px");
+                $(".dot5").siblings().css("background-color", "transparent");
+            };
+
+        });
+
+
+    // let left = 0;
+    // $("li").hover(function () {
+    //   console.log($(this).index());
+    //   let left = $(this).index() * -800;
+    //   $(".img-wrap").css("left", left);
+    // });
+
+
+
+  // $("li").hover(function () {
+  //   console.log($(this).index());
+  //   $(".img-").css("left", $(this).index() * -800);
+  // });    這個寫法可讀性很低
+
+
+    </script>
+</body>
+
+</html>

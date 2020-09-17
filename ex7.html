@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偵測滾動百分比progress bar
+    </title>
+
+    <!-- 1. 利用 scrollTop() 算出目前捲軸位置
+2. 與頁面高度對比算出比例
+3. 再將比例加到進度條上  https://www.thenewslens.com/article/140522   (scroll運用)-->
+    <style>
+        body {
+            margin: 0;
+            height: 300vh;
+            transition: 0.5s;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 50px;
+            background-color: #ddd;
+            position: fixed;
+        }
+
+        .progressBar {
+            height: 50px;
+            width: 0%;
+            background-color: #fda;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="progressBar">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // let pageHeight = $("body").height();
+        // let windowHeight = $("window").height();
+        //放外面如果先改變視窗大小，進度條會有問題
+
+
+
+        // let percent = 
+
+        // $(window).scroll(function () {
+        //     console.log("scroll", $(this).scrollTop());
+        //     $(".progressBar").css("width", ($(this).scrollTop() / windowHeight) * 100 + "%");
+        // });
+
+        //progressBar-width = scrollTop/body-height
+
+
+
+        $(window).scroll(function () {
+            console.log("scroll", $(this).scrollTop());
+
+            console.log("body height", $("body").height());
+            console.log("window height", $(window).height());
+            console.log("height", $(window).height() - $("body").height());
+
+            let pageHeight = $("body").height();
+            let windowHeight = $(window).height();
+
+
+            let scrollTop = $(this).scrollTop();
+            let percent = (scrollTop / (pageHeight - windowHeight)) * 100 + "%";
+            // let half = (scrollTop / (pageHeight - windowHeight*2)) * 100
+
+            let half = pageHeight - windowHeight
+
+            $(".progressBar").css("width", percent);
+
+            if (scrollTop > (half / 2)) {
+                $("body").css("background-color", "lightyellow");
+            } else {
+                $("body").css("background", "none");
+            };
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

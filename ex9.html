@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change-font-size</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .fontS {
+            font-size: 0.8rem;
+        }
+
+        .fontM {
+            font-size: 1.5rem;
+        }
+
+        .fontL {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="py-2 d-flex justify-content-end">
+            <button class="btn btn-info" id="S">S</button>
+            <button class="btn btn-info" id="M">M</button>
+            <button class="btn btn-info" id="L">L</button>
+        </div>
+        <h2>jQuery</h2>
+        <article>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iusto eligendi nihil voluptatum
+                cumque.
+                Eum et, commodi, quam esse, tenetur odio vel eligendi praesentium omnis incidunt architecto sit atque
+                fuga!
+            </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam quos ipsam nostrum
+                repellat
+                labore provident voluptates reprehenderit error delectus illum, adipisci nobis officia? Sunt alias iure
+                odio
+                earum doloremque!</p>
+        </article>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // $("S").click(function () {
+        //     $("p").addClass("font-size", ".8rem");
+        // });
+
+        // $(".btn:contains('S')").click (function () {
+        // });  只會選到Ｓ而已
+
+
+        // $(".btn").click(function () {
+        //     if ($(this).is(":contains('S')")) {
+        //           console.log("S");
+        //         // $("article").addClass("fontS");
+        //     }
+        // });
+
+        $(".btn").click(function () {
+
+            if ($(this).is(":contains('S')")) {
+                //   console.log("S");
+                $("article").addClass("fontM").remove("fontM").removeClass("fontL");
+            }
+
+            if ($(this).is(":contains('M')")) {
+                //   console.log("M");
+                $("article").addClass("fontM").remove("fontS").removeClass("fontL");
+            }
+
+            if ($(this).is(":contains('L')")) {
+                //   console.log("L");
+                $("article").addClass("fontL").remove("fontM").removeClass("fontS");
+            }
+        });
+
+        // $(".btn").click(function () {
+        //     $("article").removeClass();
+
+        //     if ($(this).is(":contains('S')")) {
+        //         $("article").addClass("fontS");
+        //     }
+        //     if ($(this).is(":contains('M')")) {
+        //         $("article").addClass("fontM");
+        //     }
+        //     if ($(this).is(":contains('L')")) {
+        //         $("article").addClass("fontL");
+        //     }
+        // });
+
+
+
+    </script>
+
+</body>
+
+</html>
