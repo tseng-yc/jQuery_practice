@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        span {
+            color: darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn btn-success" id="getText">get text</button>
+        <button class="btn btn-success" id="getHtml">get html</button>
+
+        <input type="text" name="" id="input" value="123" />
+        <input type="text" name="" id="input2" value="456" />
+        <h1 id="sample">Hello <span>World</span></h1>
+        <h1 id="result"></h1>
+        <img src="" alt="">
+        <!-- 要改scr用attr -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // console.log("input value:", $("#input").val());  
+
+        function con(value) {
+            console.log("input value:", value);
+        }  //沒有事件去呼叫的話就不會出現
+
+
+        // con();
+        // con($("#input2").val());
+
+        $("#getText").click(function () {
+            let content = $("#sample").text();
+            $("#result").text(content);
+        });
+
+        $("#getHtml").click(function () {
+            let content = $("#sample").html();
+            $("#result").html(content);
+        });
+
+        // con($("#input").html());
+    </script>
+
+</body>
+
+</html>
